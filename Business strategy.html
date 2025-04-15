@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeChakra Business Proposal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7928CA;
+            --secondary: #FF0080;
+            --accent: #0070F3;
+            --background: #f8f9fa;
+            --text: #333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: white;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 1rem;
+        }
+        
+        .page-break {
+            page-break-after: always;
+        }
+        
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            background-color: white;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .feature-card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            background-color: white;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .chakra-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Cover Page -->
+    <div class="min-h-screen flex flex-col items-center justify-center text-center p-4 gradient-bg">
+        <div class="bg-white rounded-lg shadow-2xl p-10 max-w-4xl">
+            <div class="flex justify-center mb-6">
+                <div class="w-32 h-32 rounded-full flex items-center justify-center gradient-bg">
+                    <i class="fas fa-dharmachakra text-6xl text-white"></i>
+                </div>
+            </div>
+            <h1 class="text-5xl font-bold mb-4 gradient-text">MemeChakra</h1>
+            <p class="text-2xl mb-6">AI-Powered Desi Meme Revolution</p>
+            <p class="text-lg mb-8 italic">"Unleash Your Meme Shakti with the Power of AI"</p>
+            <div class="flex justify-center space-x-4 mb-10">
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <i class="fas fa-robot text-purple-600"></i>
+                </div>
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <i class="fas fa-laugh-beam text-purple-600"></i>
+                </div>
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <i class="fas fa-share-alt text-purple-600"></i>
+                </div>
+            </div>
+            <p class="text-gray-600">Business Proposal | 2023</p>
+        </div>
+    </div>
+    
+    <!-- Table of Contents -->
+    <div class="container mx-auto px-4 py-16 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Table of Contents</h2>
+        <div class="card">
+            <ol class="list-decimal list-inside space-y-3 text-lg">
+                <li><a href="#executive-summary" class="text-purple-600 hover:text-purple-800">Executive Summary</a></li>
+                <li><a href="#market-opportunity" class="text-purple-600 hover:text-purple-800">Market Opportunity</a></li>
+                <li><a href="#product-overview" class="text-purple-600 hover:text-purple-800">Product Overview</a></li>
+                <li><a href="#core-features" class="text-purple-600 hover:text-purple-800">Core Features</a></li>
+                <li><a href="#technical-architecture" class="text-purple-600 hover:text-purple-800">Technical Architecture</a></li>
+                <li><a href="#implementation-plan" class="text-purple-600 hover:text-purple-800">Implementation Plan</a></li>
+                <li><a href="#growth-strategy" class="text-purple-600 hover:text-purple-800">Growth Strategy</a></li>
+                <li><a href="#monetization-strategy" class="text-purple-600 hover:text-purple-800">Monetization Strategy</a></li>
+                <li><a href="#financial-projections" class="text-purple-600 hover:text-purple-800">Financial Projections</a></li>
+                <li><a href="#competitive-analysis" class="text-purple-600 hover:text-purple-800">Competitive Analysis</a></li>
+                <li><a href="#risk-assessment" class="text-purple-600 hover:text-purple-800">Risk Assessment</a></li>
+                <li><a href="#conclusion" class="text-purple-600 hover:text-purple-800">Conclusion</a></li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- Executive Summary -->
+    <div id="executive-summary" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Executive Summary</h2>
+        <div class="card">
+            <p class="mb-4">
+                MemeChakra combines the cultural symbolism of 'chakra' (representing power, energy, and cycle) with India's vibrant meme culture to create an AI-powered, zero-investment meme generation platform specifically designed for Indian users.
+            </p>
+            <p class="mb-4">
+                The platform empowers users to create culturally relevant, shareable memes in seconds through an intuitive interface powered by smart AI integration. By leveraging free-tier services and resources, MemeChakra will launch without upfront investment while creating a pathway to monetization.
+            </p>
+            <div class="mt-8 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                <h4 class="text-xl font-bold mb-2">Key Highlights</h4>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><span class="font-medium">Target Market:</span> 500M+ WhatsApp and 350M+ Instagram users in India</li>
+                    <li><span class="font-medium">USP:</span> AI-powered meme creation with deep understanding of Indian cultural context</li>
+                    <li><span class="font-medium">Zero-Investment Launch:</span> Utilizing free-tier services and strategic technical architecture</li>
+                    <li><span class="font-medium">Revenue Model:</span> Freemium model with one-time payments (₹49-99) for premium features</li>
+                    <li><span class="font-medium">6-Month Goal:</span> 25,000+ users and ₹25,000-50,000 monthly revenue</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Market Opportunity -->
+    <div id="market-opportunity" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Market Opportunity</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Target Audience</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">
+                    <i class="fas fa-user-graduate text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="text-lg font-semibold mb-2">Gen Z & Millennials</h4>
+                    <p class="text-gray-600">16-30 years</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">
+                    <i class="fas fa-city text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="text-lg font-semibold mb-2">Urban India</h4>
+                    <p class="text-gray-600">Tier 1 & 2 cities</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-gray-200 text-center">
+                    <i class="fas fa-camera text-4xl text-purple-600 mb-3"></i>
+                    <h4 class="text-lg font-semibold mb-2">Content Creators</h4>
+                    <p class="text-gray-600">Social media enthusiasts</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Market Size & Growth</h3>
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-gray-50 p-4 rounded-lg text-center">
+                    <h4 class="text-3xl font-bold text-purple-600 mb-2">500M+</h4>
+                    <p class="text-gray-600">WhatsApp Users in India</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg text-center">
+                    <h4 class="text-3xl font-bold text-purple-600 mb-2">350M+</h4>
+                    <p class="text-gray-600">Instagram Users in India</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg text-center">
+                    <h4 class="text-3xl font-bold text-purple-600 mb-2">80%</h4>
+                    <p class="text-gray-600">Share Memes Daily</p>
+                </div>
+            </div>
+            <p class="mb-2">India has the world's fastest growing meme market with 35% YoY growth.</p>
+            <p class="mb-2">50% of Indian internet users create or share memes at least once a week.</p>
+            <p>Regional language memes are growing 45% faster than English ones.</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Pain Points Addressed</h3>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-check text-green-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Time-consuming meme creation process</h4>
+                        <p class="text-gray-600">Creating memes manually requires multiple tools and steps</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-check text-green-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Lack of culturally relevant templates</h4>
+                        <p class="text-gray-600">Global platforms lack understanding of Indian contexts and references</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-check text-green-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Complex design tools</h4>
+                        <p class="text-gray-600">Existing design tools have steep learning curves</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-check text-green-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-medium">Limited sharing options</h4>
+                        <p class="text-gray-600">Poor integration with popular Indian social platforms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Overview -->
+    <div id="product-overview" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Product Overview</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Vision & Mission</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-2 text-purple-600">Vision</h4>
+                    <p>To become India's go-to platform for desi meme creation by blending cultural relevance with cutting-edge AI technology.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-2 text-purple-600">Mission</h4>
+                    <p>Empower every Indian internet user to express themselves through humor, regardless of technical skills or design experience.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Product Concept</h3>
+            <p class="mb-4">
+                MemeChakra is a web-based platform that allows users to create memes through two primary methods:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow">
+                    <h4 class="text-xl font-semibold mb-2">AI-Powered Generation</h4>
+                    <p>Users enter text prompts, and the system suggests relevant templates and captions with desi context.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow">
+                    <h4 class="text-xl font-semibold mb-2">Template-Based Creation</h4>
+                    <p>Users browse culturally categorized templates (Bollywood, Cricket, Politics, College Life) and customize them with an intuitive editor.</p>
+                </div>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg">
+                <p class="italic text-center">"MemeChakra combines the power of AI with deep cultural context to create a uniquely Indian meme experience."</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">User Journey Overview</h3>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flex-1 bg-white p-4 rounded border border-gray-200 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">1</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Input Idea</h4>
+                    <p class="text-sm text-gray-600">Enter text prompt or browse templates</p>
+                </div>
+                <div class="flex-1 bg-white p-4 rounded border border-gray-200 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">2</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">AI Processing</h4>
+                    <p class="text-sm text-gray-600">AI matches templates & suggests captions</p>
+                </div>
+                <div class="flex-1 bg-white p-4 rounded border border-gray-200 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">3</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Customize</h4>
+                    <p class="text-sm text-gray-600">Edit text, add stickers, apply effects</p>
+                </div>
+                <div class="flex-1 bg-white p-4 rounded border border-gray-200 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">4</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Share</h4>
+                    <p class="text-sm text-gray-600">One-tap share to social platforms</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Core Features -->
+    <div id="core-features" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Core Features: Seven Chakras of Meme Creation</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+            <!-- Chakra 1 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #FF0000, #FF5733);">
+                        <span>1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Muladhara (Root) Chakra</h3>
+                        <p class="text-purple-600">Template Foundation</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Extensive library of Indian-context templates</li>
+                    <li>Categorized by cultural themes (Bollywood, Cricket, Politics)</li>
+                    <li>Weekly updates with trending topics</li>
+                    <li>User-submitted template program</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 2 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #FF5733, #FFC300);">
+                        <span>2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Svadhishthana (Sacral) Chakra</h3>
+                        <p class="text-purple-600">Creative Expression</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Intuitive drag-and-drop editor</li>
+                    <li>Text customization with desi fonts</li>
+                    <li>Sticker library with Indian expressions</li>
+                    <li>Multiple layout options for perfect meme format</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 3 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #FFC300, #FFFF00);">
+                        <span>3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Manipura (Solar Plexus) Chakra</h3>
+                        <p class="text-purple-600">AI Power Center</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Smart template matching from text prompts</li>
+                    <li>AI-generated caption suggestions</li>
+                    <li>Contextual understanding of Indian references</li>
+                    <li>Automatic formatting for different platforms</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 4 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #FFFF00, #00FF00);">
+                        <span>4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Anahata (Heart) Chakra</h3>
+                        <p class="text-purple-600">Emotional Connect</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Sentiment analysis for matching templates to mood</li>
+                    <li>Cultural context-aware suggestions</li>
+                    <li>Relatable situational templates</li>
+                    <li>Personalized recommendations based on user history</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 5 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #00FF00, #0080FF);">
+                        <span>5</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Vishuddha (Throat) Chakra</h3>
+                        <p class="text-purple-600">Expression & Sharing</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>One-tap sharing to WhatsApp, Instagram, Twitter</li>
+                    <li>Custom formatting for different platforms</li>
+                    <li>Viral-optimized output</li>
+                    <li>Auto-hashtag generation for maximum reach</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 6 -->
+            <div class="feature-card">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #0080FF, #A020F0);">
+                        <span>6</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Ajna (Third Eye) Chakra</h3>
+                        <p class="text-purple-600">Community Insight</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Trending memes section</li>
+                    <li>Weekly challenges and contests</li>
+                    <li>Community voting system</li>
+                    <li>Meme analytics for creators</li>
+                </ul>
+            </div>
+            
+            <!-- Chakra 7 -->
+            <div class="feature-card md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <div class="chakra-circle mr-4" style="background: linear-gradient(135deg, #A020F0, #FF00FF);">
+                        <span>7</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Sahasrara (Crown) Chakra</h3>
+                        <p class="text-purple-600">Ultimate Personalization</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>User meme history and favorites</li>
+                        <li>Personalized recommendations</li>
+                    </ul>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Custom template creation (future feature)</li>
+                        <li>Advanced AI-powered customization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Technical Magic (Behind the Scenes)</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-4 rounded-lg bg-gray-50">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-robot text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Zero-Cost AI Integration</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Google AI Studio (Gemini API) free tier</li>
+                        <li>Smart prompt engineering</li>
+                        <li>Caching system to minimize API calls</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-50">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-server text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Resource-Efficient Architecture</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Client-side processing where possible</li>
+                        <li>Efficient template matching algorithms</li>
+                        <li>Progressive enhancement for older devices</li>
+                    </ul>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-50">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-mobile-alt text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Mobile-First Design</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>PWA capabilities for app-like experience</li>
+                        <li>Optimized for bandwidth-conscious users</li>
+                        <li>Responsive on all screen sizes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Technical Architecture -->
+    <div id="technical-architecture" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Technical Architecture (Zero-Cost)</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Frontend</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fab fa-html5 text-purple-600"></i>
+                        </div>
+                        <span>HTML5/CSS3/JavaScript</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-palette text-purple-600"></i>
+                        </div>
+                        <span>Canvas API for image manipulation</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-mobile-alt text-purple-600"></i>
+                        </div>
+                        <span>Progressive Web App implementation</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fab fa-github text-purple-600"></i>
+                        </div>
+                        <span>GitHub Pages hosting (free)</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Backend</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-fire text-purple-600"></i>
+                        </div>
+                        <span>Firebase (Free Tier)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-database text-purple-600"></i>
+                        </div>
+                        <span>Firestore for database</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user-shield text-purple-600"></i>
+                        </div>
+                        <span>Firebase Authentication</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-hdd text-purple-600"></i>
+                        </div>
+                        <span>Firebase Storage (1GB free)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">AI Integration</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-purple-600"></i>
+                        </div>
+                        <span>Google AI Studio (Gemini API - Free Tier)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-comment-dots text-purple-600"></i>
+                        </div>
+                        <span>Smart prompt engineering</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-layer-group text-purple-600"></i>
+                        </div>
+                        <span>Caching and fallback systems</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-tachometer-alt text-purple-600"></i>
+                        </div>
+                        <span>Rate limiting implementation</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Content Delivery</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-network-wired text-purple-600"></i>
+                        </div>
+                        <span>GitHub Pages CDN</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-compress-arrows-alt text-purple-600"></i>
+                        </div>
+                        <span>Image optimization for faster loading</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-hourglass-half text-purple-600"></i>
+                        </div>
+                        <span>Lazy loading techniques</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-purple-600"></i>
+                        </div>
+                        <span>Free SSL certificates</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card mt-8">
+            <h3 class="text-xl font-semibold mb-4">Smart AI Implementation (Pseudo-code)</h3>
+            <pre class="bg-gray-800 text-green-400 p-4 rounded-lg text-sm overflow-x-auto">
+// Smart AI Implementation Architecture
+
+// 1. Caption Generation System
+async function generateCaptions(userInput, category) {
+  // Try cache first
+  const cachedResult = checkCache(`caption:${userInput}:${category}`);
+  if (cachedResult) return cachedResult;
+  
+  // Use Gemini API with smart prompt
+  const prompt = `Generate 3 funny, viral Hinglish captions for a meme about ${userInput} 
+               in the context of ${category} (like Bollywood, Cricket, College).
+               Make them short, punchy, and with desi humor. Use some emojis.`;
+  
+  try {
+    const result = await callGeminiAPI(prompt);
+    // Cache result for 24 hours
+    saveToCache(`caption:${userInput}:${category}`, result, 86400);
+    return result;
+  } catch (error) {
+    // Fallback to pre-written captions if API fails
+    return getPrewrittenCaptions(category, userInput);
+  }
+}
+
+// 2. Template Matching System
+function findBestTemplate(userInput, category) {
+  // Use basic NLP to match input with appropriate templates
+  const keywords = extractKeywords(userInput);
+  const emotionalTone = analyzeEmotionalTone(userInput);
+  
+  // Score each template based on keyword match and tone
+  const rankedTemplates = allTemplates
+    .filter(t => t.category === category || category === 'all')
+    .map(template => ({
+      template,
+      score: calculateMatchScore(template, keywords, emotionalTone)
+    }))
+    .sort((a, b) => b.score - a.score);
+    
+  return rankedTemplates.slice(0, 3); // Return top 3 matches
+}
+
+// 3. Resource Conservation System
+const apiRateLimiter = {
+  maxCalls: 50, // per hour
+  currentCalls: 0,
+  resetTime: Date.now() + 3600000,
+  
+  canMakeCall() {
+    // Reset counter if hour has passed
+    if (Date.now() > this.resetTime) {
+      this.currentCalls = 0;
+      this.resetTime = Date.now() + 3600000;
+    }
+    
+    return this.currentCalls < this.maxCalls;
+  },
+  
+  registerCall() {
+    this.currentCalls++;
+  }
+};
+            </pre>
+        </div>
+    </div>
+    
+    <!-- Implementation Plan -->
+    <div id="implementation-plan" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Implementation Plan</h2>
+        
+        <div class="timeline-container mb-12">
+            <!-- Phase 1 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3 class="text-xl font-semibold mb-2">Phase 1: Foundation</h3>
+                    <p class="text-purple-600 font-medium mb-2">Days 1-30</p>
+                    <div class="space-y-2">
+                        <p class="font-medium">Technical Setup:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>GitHub Pages hosting setup</li>
+                            <li>Firebase free tier integration</li>
+                            <li>Frontend scaffolding with HTML/CSS/JS</li>
+                            <li>Basic editor functionality</li>
+                        </ul>
+                        
+                        <p class="font-medium">Content Creation:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Develop 100 initial templates across categories</li>
+                            <li>Create caption database with 200+ options</li>
+                            <li>Design basic UI elements and brand identity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3 class="text-xl font-semibold mb-2">Phase 2: Core Development</h3>
+                    <p class="text-purple-600 font-medium mb-2">Days 31-60</p>
+                    <div class="space-y-2">
+                        <p class="font-medium">Feature Implementation:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>AI integration with Gemini API</li>
+                            <li>Template matching algorithm development</li>
+                            <li>Caption suggestion system</li>
+                            <li>Basic sharing functionality</li>
+                        </ul>
+                        
+                        <p class="font-medium">User Experience Enhancement:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Editor refinement with more options</li>
+                            <li>Mobile responsiveness optimization</li>
+                            <li>Loading time improvements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 3 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3 class="text-xl font-semibold mb-2">Phase 3: Growth & Optimization</h3>
+                    <p class="text-purple-600 font-medium mb-2">Days 61-90</p>
+                    <div class="space-y-2">
+                        <p class="font-medium">Feature Expansion:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Enhanced AI capabilities</li>
+                            <li>More editor options and templates</li>
+                            <li>Community features activation</li>
+                        </ul>
+                        
+                        <p class="font-medium">Performance Optimization:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Caching mechanisms implementation</li>
+                            <li>API call efficiency improvements</li>
+                            <li>Load time optimization</li>
+                        </ul>
+                        
+                        <p class="font-medium">Community Building:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Weekly meme challenges launch</li>
+                            <li>Featured creator program</li>
+                            <li>Cross-promotion with meme pages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3 class="text-xl font-semibold mb-2">Phase 4: Monetization Preparation</h3>
+                    <p class="text-purple-600 font-medium mb-2">Days 91-120</p>
+                    <div class="space-y-2">
+                        <p class="font-medium">Freemium Model Development:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Premium features definition</li>
+                            <li>Payment integration planning</li>
+                            <li>Value proposition refinement</li>
+                        </ul>
+                        
+                        <p class="font-medium">Scaling Infrastructure:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Review of free resources utilization</li>
+                            <li>Optimization for higher user loads</li>
+                            <li>Backup systems and redundancy</li>
+                        </ul>
+                        
+                        <p class="font-medium">Brand Partnerships:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm">
+                            <li>Outreach to potential sponsors</li>
+                            <li>Affiliate program structure</li>
+                            <li>Branded template opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Key Milestones & Success Metrics</h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-xl mb-3">Month 1</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>500+ registered users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>2,000+ memes created</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>100+ daily active users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>Social media: 500+ followers</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-xl mb-3">Month 3</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>5,000+ registered users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>20,000+ memes created</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>500+ daily active users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>10% community engagement</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="p-6 bg-gray-50 rounded-lg">
+                    <h4 class="font-semibold text-xl mb-3">Month 6</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>25,000+ registered users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>100,000+ memes created</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>2,500+ daily active users</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <span>₹25,000-50,000 revenue</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Growth Strategy -->
+    <div id="growth-strategy" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Growth Strategy (Zero Budget)</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Organic Acquisition</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-hashtag text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Social Media Presence</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Daily content posting on Instagram/X</li>
+                        <li>Strategic hashtags: #MemeChakra #DesiMemes</li>
+                        <li>Featured user creations with attribution</li>
+                        <li>Trend-jacking with timely meme templates</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-users text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Community Building</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Reddit engagement in r/IndianMemes</li>
+                        <li>Discord server for meme enthusiasts</li>
+                        <li>Weekly challenges with recognition</li>
+                        <li>User-generated template library</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-newspaper text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Content Marketing</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>"How to create viral memes" guides</li>
+                        <li>Trend analysis posts</li>
+                        <li>Template of the week features</li>
+                        <li>Guest meme creator spotlights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Retention Tactics</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-sync-alt text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Engagement Loops</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Daily login rewards (new templates)</li>
+                        <li>Weekly challenges with community voting</li>
+                        <li>Personal meme collection building</li>
+                        <li>Achievement badges for milestones</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-plus-circle text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Fresh Content</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>New templates for trending topics</li>
+                        <li>Festival/event special packs</li>
+                        <li>User-submitted template program</li>
+                        <li>Topical meme suggestions</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-trophy text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold text-center mb-2">Community Recognition</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>Featured creator program</li>
+                        <li>Meme of the Week showcase</li>
+                        <li>Leaderboards for most shared memes</li>
+                        <li>Achievement badges system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Strategic Partnerships</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold mb-2">Micro-Influencer Collaboration</h4>
+                    <p class="text-sm mb-3">Partner with 10-15 small meme creators (1K-10K followers) to promote the platform in exchange for premium features.</p>
+                    <div class="bg-purple-50 p-3 rounded-lg text-sm">
+                        <p class="italic">"We'll provide free lifetime premium access to select meme creators who help promote MemeChakra to their audience."</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold mb-2">Content Cross-Promotion</h4>
+                    <p class="text-sm mb-3">Collaborate with complementary platforms and communities (local content creators, college groups) for mutual promotion.</p>
+                    <div class="bg-purple-50 p-3 rounded-lg text-sm">
+                        <p class="italic">"By featuring content from college meme pages and providing them with custom templates, we can tap into existing communities."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Monetization Strategy -->
+    <div id="monetization-strategy" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Monetization Strategy</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Freemium Model</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-semibold">Free Forever</h4>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">₹0</span>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            <span>Unlimited meme creation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            <span>Basic template access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            <span>Standard quality downloads</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            <span>Subtle watermarking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-600 mr-2"></i>
+                            <span>Social sharing options</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#" class="inline-block px-6 py-2 bg-white border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-6 rounded-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-xl font-semibold">Premium</h4>
+                        <span class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm">₹49 - ₹99</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">One-time payment, lifetime access</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>All free features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>HD downloads</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>Watermark removal</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>Exclusive template access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>Advanced editing features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-600 mr-2"></i>
+                            <span>Priority access to new features</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="#" class="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">Upgrade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="card">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-handshake text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-3">Brand Partnerships</h3>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Sponsored templates for movie releases</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Branded meme challenges</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Special event collaborations</span>
+                    </li>
+                </ul>
+                <div class="mt-3 p-2 bg-purple-50 rounded text-sm">
+                    <p class="italic">Estimated Revenue: ₹5,000-15,000/month (after 6 months)</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-link text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-3">Affiliate Marketing</h3>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Related creative tools</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Merchandise opportunities</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Content creator tools</span>
+                    </li>
+                </ul>
+                <div class="mt-3 p-2 bg-purple-50 rounded text-sm">
+                    <p class="italic">Estimated Revenue: ₹3,000-8,000/month (after 6 months)</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-ad text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-3">Light Advertising</h3>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Non-intrusive banner ads</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Native sponsored templates</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mr-2 mt-1"></i>
+                        <span>Targeted promotions</span>
+                    </li>
+                </ul>
+                <div class="mt-3 p-2 bg-purple-50 rounded text-sm">
+                    <p class="italic">Estimated Revenue: ₹2,000-5,000/month (after 6 months)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Conversion Strategy</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold mb-2">Value Proposition</h4>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>One-time payment model instead of subscriptions</p>
+                                <p class="text-sm text-gray-600">More appealing to price-sensitive Indian market</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>Premium features that enhance sharing potential</p>
+                                <p class="text-sm text-gray-600">HD quality, watermark removal, exclusive templates</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>Status-based motivation</p>
+                                <p class="text-sm text-gray-600">"Premium Creator" badges and recognition</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-2">Conversion Tactics</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>Limited-time promotions</p>
+                                <p class="text-sm text-gray-600">Launch discount, special event offers</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>Strategic feature limitations</p>
+                                <p class="text-sm text-gray-600">Watermarks placed optimally to encourage upgrades</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1">
+                                <i class="fas fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p>Targeted upgrade prompts</p>
+                                <p class="text-sm text-gray-600">Show premium features at key moments in user journey</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Financial Projections -->
+    <div id="financial-projections" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Financial Projections</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-6">6-Month Revenue Projection</h3>
+            <div class="bg-white overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Revenue Stream</th>
+                            <th>Month 3</th>
+                            <th>Month 4</th>
+                            <th>Month 5</th>
+                            <th>Month 6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Premium Upgrades</td>
+                            <td>₹5,000</td>
+                            <td>₹8,000</td>
+                            <td>₹12,000</td>
+                            <td>₹20,000</td>
+                        </tr>
+                        <tr>
+                            <td>Brand Partnerships</td>
+                            <td>₹0</td>
+                            <td>₹2,000</td>
+                            <td>₹3,500</td>
+                            <td>₹7,000</td>
+                        </tr>
+                        <tr>
+                            <td>Affiliate Marketing</td>
+                            <td>₹500</td>
+                            <td>₹1,200</td>
+                            <td>₹2,500</td>
+                            <td>₹4,000</td>
+                        </tr>
+                        <tr>
+                            <td>Light Advertising</td>
+                            <td>₹0</td>
+                            <td>₹1,000</td>
+                            <td>₹2,000</td>
+                            <td>₹3,000</td>
+                        </tr>
+                        <tr class="bg-purple-50 font-semibold">
+                            <td>Total Monthly Revenue</td>
+                            <td>₹5,500</td>
+                            <td>₹12,200</td>
+                            <td>₹20,000</td>
+                            <td>₹34,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Key Financial Assumptions</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold mb-2">User Growth</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-purple-600 mr-2 mt-1"></i>
+                            <span>Monthly user growth rate: 40-50%</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-purple-600 mr-2 mt-1"></i>
+                            <span>Daily active users: ~10% of registered users</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chart-line text-purple-600 mr-2 mt-1"></i>
+                            <span>User retention rate: 60% month-to-month</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-2">Conversion Rates</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-percentage text-purple-600 mr-2 mt-1"></i>
+                            <span>Premium conversion: 2-3% of active users</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-percentage text-purple-600 mr-2 mt-1"></i>
+                            <span>Average premium purchase: ₹75</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-percentage text-purple-600 mr-2 mt-1"></i>
+                            <span>Affiliate click-through rate: 1.5%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Cost Structure (Zero Investment)</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Resource</th>
+                            <th>Cost</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hosting (GitHub Pages)</td>
+                            <td>₹0</td>
+                            <td>Free tier sufficient for initial 6 months</td>
+                        </tr>
+                        <tr>
+                            <td>Backend (Firebase)</td>
+                            <td>₹0</td>
+                            <td>Free tier limits (50K reads, 20K writes daily)</td>
+                        </tr>
+                        <tr>
+                            <td>Domain</td>
+                            <td>₹0</td>
+                            <td>Using subdomain (memechakra.netlify.app)</td>
+                        </tr>
+                        <tr>
+                            <td>AI API (Gemini)</td>
+                            <td>₹0</td>
+                            <td>Free tier with usage optimization</td>
+                        </tr>
+                        <tr>
+                            <td>Design Assets</td>
+                            <td>₹0</td>
+                            <td>Open-source resources and self-created assets</td>
+                        </tr>
+                        <tr>
+                            <td>Development</td>
+                            <td>₹0</td>
+                            <td>Self-developed with open-source tools</td>
+                        </tr>
+                        <tr class="bg-green-50 font-semibold">
+                            <td>Total Monthly Costs</td>
+                            <td>₹0</td>
+                            <td>Zero-cost structure for initial 6 months</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Competitive Analysis -->
+    <div id="competitive-analysis" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Competitive Analysis</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-6">Market Positioning</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>ImgFlip</th>
+                            <th>Mematic</th>
+                            <th>MemeGenerator</th>
+                            <th>MemeChakra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Desi Context</td>
+                            <td>★☆☆☆☆</td>
+                            <td>★☆☆☆☆</td>
+                            <td>★★☆☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td>AI Integration</td>
+                            <td>★★☆☆☆</td>
+                            <td>★☆☆☆☆</td>
+                            <td>★☆☆☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td>Ease of Use</td>
+                            <td>★★★☆☆</td>
+                            <td>★★★★☆</td>
+                            <td>★★☆☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Experience</td>
+                            <td>★★★☆☆</td>
+                            <td>★★★★☆</td>
+                            <td>★★☆☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td>Zero Cost Model</td>
+                            <td>★★★☆☆</td>
+                            <td>★★☆☆☆</td>
+                            <td>★★★☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td>Community Features</td>
+                            <td>★★★★☆</td>
+                            <td>★★☆☆☆</td>
+                            <td>★★★☆☆</td>
+                            <td class="text-purple-600 font-semibold">★★★★☆</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Competitive Advantages</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-check text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Indian Cultural Context</p>
+                            <p class="text-sm text-gray-600">Deep understanding of desi meme trends, Bollywood references, and cultural nuances</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-check text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Zero-Cost Implementation</p>
+                            <p class="text-sm text-gray-600">Smart technical architecture allows for launch without financial investment</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-check text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">AI That Feels Magical</p>
+                            <p class="text-sm text-gray-600">Complex technology hidden behind simple, intuitive interface</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-check text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Community-Centered</p>
+                            <p class="text-sm text-gray-600">Built around Indian meme community needs and preferences</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-4">Market Differentiation Strategy</h3>
+                <p class="mb-4">
+                    While global competitors focus on general audiences, MemeChakra will carve a niche by becoming the definitive platform for Indian meme creation through:
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-lightbulb text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Cultural Authenticity</p>
+                            <p class="text-sm text-gray-600">Templates and captions that deeply resonate with Indian users</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-lightbulb text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Contextual AI</p>
+                            <p class="text-sm text-gray-600">AI that understands cultural references and local humor</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-1">
+                            <i class="fas fa-lightbulb text-purple-600 text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Localized Monetization</p>
+                            <p class="text-sm text-gray-600">Payment structure optimized for Indian market preferences</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Risk Assessment -->
+    <div id="risk-assessment" class="container mx-auto px-4 py-12 max-w-4xl section bg-gray-50">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Risk Assessment & Mitigation</h2>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-6">Key Risks & Mitigation Strategies</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th>Risk</th>
+                            <th>Probability</th>
+                            <th>Impact</th>
+                            <th>Mitigation Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>API Usage Limits</td>
+                            <td>High</td>
+                            <td>Medium</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Implement smart caching</li>
+                                    <li>Create fallback systems</li>
+                                    <li>Rate limiting on client side</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Content Moderation</td>
+                            <td>Medium</td>
+                            <td>High</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Community reporting system</li>
+                                    <li>Basic keyword filtering</li>
+                                    <li>Clear terms of service</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Competition</td>
+                            <td>Medium</td>
+                            <td>Medium</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Focus on Indian context as differentiator</li>
+                                    <li>Build community before competitors</li>
+                                    <li>First-mover advantage in desi space</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Scaling Issues</td>
+                            <td>Medium</td>
+                            <td>High</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Optimize early for efficiency</li>
+                                    <li>Monitor usage patterns</li>
+                                    <li>Prepare migration plan for paid services</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>User Retention</td>
+                            <td>Medium</td>
+                            <td>High</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Regular fresh content addition</li>
+                                    <li>Engagement loops and challenges</li>
+                                    <li>Community building focus</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Copyright Issues</td>
+                            <td>Medium</td>
+                            <td>Medium</td>
+                            <td>
+                                <ul class="list-disc list-inside text-sm">
+                                    <li>Fair use education for users</li>
+                                    <li>DMCA compliance system</li>
+                                    <li>Focus on transformative content</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conclusion -->
+    <div id="conclusion" class="container mx-auto px-4 py-12 max-w-4xl section">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Conclusion</h2>
+        
+        <div class="card mb-8">
+            <h3 class="text-2xl font-semibold mb-4">The MemeChakra Advantage</h3>
+            <p class="mb-4">
+                MemeChakra represents a unique opportunity to capitalize on India's explosive meme culture growth with zero financial investment. By focusing on cultural relevance, technical efficiency, and community engagement, MemeChakra can rapidly establish itself as the definitive desi meme creation platform.
+            </p>
+            <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                <p class="italic text-center">
+                    "MemeChakra isn't just a tool – it's a cultural platform that understands and amplifies India's unique digital voice through the universal language of memes."
+                </p>
+            </div>
+            <p>
+                Our zero-cost launch strategy, combined with a clear path to monetization, creates a low-risk opportunity with significant growth potential in one of the world's fastest-growing digital markets.
+            </p>
+        </div>
+        
+        <div class="card">
+            <h3 class="text-2xl font-semibold mb-4">Call to Action</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">1</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Technical Setup</h4>
+                    <p class="text-sm">Finalize infrastructure and begin development</p>
+                </div>
+                
+                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">2</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Content Creation</h4>
+                    <p class="text-sm">Begin template design and categorization</p>
+                </div>
+                
+                <div class="p-4 bg-gray-50 rounded-lg text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-3">
+                        <span class="text-purple-600 font-bold">3</span>
+                    </div>
+                    <h4 class="font-semibold mb-2">Community Building</h4>
+                    <p class="text-sm">Launch social channels and begin engagement</p>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-lg mb-4">Ready to unleash the power of AI-driven desi memes?</p>
+                <a href="#" class="inline-block px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition text-lg">Launch MemeChakra</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="gradient-bg py-12 text-white text-center">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold mb-4">MemeChakra</h2>
+            <p class="mb-6">"Unleash Your Meme Shakti with the Power of AI"</p>
+            <div class="flex justify-center space-x-4 mb-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="text-sm opacity-75">Business Proposal 2023 • All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+</body>
+</html>
