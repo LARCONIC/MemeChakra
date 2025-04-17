@@ -15,6 +15,13 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
     }
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      external: ['@google/generative-ai']
+    }
+  },
   server: {
     host: true,
     port: 3000

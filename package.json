@@ -5,8 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "npm run db:generate && npm run db:migrate && tsc && vite build",
+    "preview": "vite preview",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "tsx src/lib/migrate.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
