@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { templates, defaultCategories } from "@/data/templates";
-import { generateMemeText } from "@/lib/openai";
+import { generateMemeText } from "@/lib/gemini";
 
 export default function MemeCreator({ language }: { language: string }) {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
