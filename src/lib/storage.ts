@@ -50,7 +50,7 @@ export const storage = {
   async getTemplatesByCategory(categoryId: string): Promise<Template[]> {
     return db.select()
       .from(templates)
-      .where(eq(templates.categoryId, categoryId));
+      .where(eq(templates.category, categoryId));
   },
 
   async createTemplate(data: InsertTemplate): Promise<Template> {
