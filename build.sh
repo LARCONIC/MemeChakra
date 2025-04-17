@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Install dependencies
+echo "Installing dependencies..."
+npm install
+
 # Build the frontend
 echo "Building frontend..."
 npm run build
@@ -23,7 +27,7 @@ if [ ! -f netlify/package.json ]; then
     "@netlify/functions": "^2.0.0",
     "@neondatabase/serverless": "^0.10.4",
     "drizzle-orm": "^0.39.1",
-    "openai": "^4.93.0",
+    "@google/generative-ai": "^0.1.3",
     "zod": "^3.23.8"
   }
 }
