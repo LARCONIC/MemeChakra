@@ -40,7 +40,7 @@ export const handler: Handler = async (
           if (category) {
             const templatesWithCategory = await db.select()
               .from(templates)
-              .where(eq(templates.categoryId, category.id));
+              .where(eq(templates.category, category.slug));
             
             return {
               statusCode: 200,
