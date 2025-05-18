@@ -1,19 +1,1508 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-    <meta name="theme-color" content="#FF5722" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="icon" type="image/svg+xml" href="/generated-icon.png" />
-    <title>MemeChakra - AI Powered Meme Generator</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeChakra - AI-Powered Desi Meme Revolution</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF5722;
+            --primary-dark: #E64A19;
+            --secondary-color: #673AB7;
+            --secondary-dark: #512DA8;
+            --accent-color: #FFC107;
+            --accent-dark: #FFA000;
+            --success-color: #4CAF50;
+            --danger-color: #F44336;
+            --text-dark: #212121;
+            --text-medium: #424242;
+            --text-light: #757575;
+            --bg-light: #FAFAFA;
+            --bg-medium: #F5F5F5;
+            --bg-dark: #EEEEEE;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-medium);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+        
+        /* Custom Components */
+        .chakra-btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .chakra-btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.2);
+        }
+        
+        .chakra-btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .chakra-btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(103, 58, 183, 0.2);
+        }
+        
+        .chakra-btn-accent {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .chakra-btn-accent:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 193, 7, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .template-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .template-card img {
+            transition: all 0.5s ease;
+        }
+        
+        .template-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .template-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .template-card:hover .template-card-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .meme-canvas-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .meme-canvas {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .meme-text {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            width: 90%;
+            word-wrap: break-word;
+            left: 5%;
+        }
+        
+        .meme-text.top {
+            top: 20px;
+        }
+        
+        .meme-text.bottom {
+            bottom: 20px;
+        }
+        
+        .category-selector {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .category-selector::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-pill {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--bg-medium);
+        }
+        
+        .category-pill.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .testimonial-card {
+            position: relative;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-quote {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.5s ease forwards;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .features-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .text-display-4 {
+                font-size: 2rem;
+            }
+            
+            .meme-text {
+                font-size: 20px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+            
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            
+            .text-display-4 {
+                font-size: 3rem;
+            }
+            
+            .meme-text {
+                font-size: 24px;
+            }
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background-color: white;
+            color: var(--text-dark);
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast.success {
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .toast.error {
+            border-left: 4px solid var(--danger-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="ri-emotion-laugh-line text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">MemeChakra</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-800 hover:text-primary-500 transition-colors">Home</a>
+                    <a href="#create" class="text-gray-800 hover:text-primary-500 transition-colors">Create</a>
+                    <a href="#templates" class="text-gray-800 hover:text-primary-500 transition-colors">Templates</a>
+                    <a href="#features" class="text-gray-800 hover:text-primary-500 transition-colors">Features</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="#create" class="chakra-btn-primary py-2 px-4 rounded-lg shadow-lg hidden md:block">
+                        Create Meme
+                    </a>
+                    <button id="mobileMenuButton" class="md:hidden text-gray-800">
+                        <i class="ri-menu-line text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden py-4 animate-fade-in">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="text-gray-800 py-2 px-4 hover:bg-gray-100 rounded-lg">Home</a>
+                    <a href="#create" class="text-gray-800 py-2 px-4 hover:bg-gray-100 rounded-lg">Create</a>
+                    <a href="#templates" class="text-gray-800 py-2 px-4 hover:bg-gray-100 rounded-lg">Templates</a>
+                    <a href="#features" class="text-gray-800 py-2 px-4 hover:bg-gray-100 rounded-lg">Features</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-16 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-slide-up opacity-0" style="animation-delay: 0.1s;">
+                    <h1 class="text-display-4 font-bold mb-4">Unleash Your Meme Shakti with AI</h1>
+                    <p class="text-lg mb-6">Create culturally relevant Desi memes in seconds with our AI-powered platform. Express your humor in any Indian language!</p>
+                    <a href="#create" class="chakra-btn-accent py-3 px-8 rounded-lg shadow-lg inline-block">Start Creating</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-slide-up opacity-0" style="animation-delay: 0.3s;">
+                    <img src="https://cdn.jsdelivr.net/gh/meme-chakra/assets@main/hero-graphic.svg" alt="MemeChakra Hero" class="w-full max-w-md">
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-16 stats-grid animate-slide-up opacity-0" style="animation-delay: 0.5s;">
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm text-center">
+                    <h3 class="text-3xl font-bold text-accent-color mb-2">10M+</h3>
+                    <p class="text-sm">Memes Created</p>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm text-center">
+                    <h3 class="text-3xl font-bold text-accent-color mb-2">20+</h3>
+                    <p class="text-sm">Indian Languages</p>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm text-center">
+                    <h3 class="text-3xl font-bold text-accent-color mb-2">500K+</h3>
+                    <p class="text-sm">Happy Users</p>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm text-center">
+                    <h3 class="text-3xl font-bold text-accent-color mb-2">1000+</h3>
+                    <p class="text-sm">Desi Templates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section id="create" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Create Your Meme</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Generate culturally relevant memes in seconds with our AI-powered platform. Just provide your idea, pick a template, and let our AI work its magic!</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Side: Meme Controls -->
+                    <div class="space-y-6">
+                        <!-- Language Selector -->
+                        <div>
+                            <label for="languageSelector" class="block text-sm font-medium text-gray-700 mb-1">Choose Language</label>
+                            <select id="languageSelector" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-primary-color">
+                                <option value="hinglish">Hinglish</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="english">English</option>
+                                <option value="tamil">Tamil</option>
+                                <option value="punjabi">Punjabi</option>
+                                <option value="bengali">Bengali</option>
+                                <option value="marathi">Marathi</option>
+                                <option value="telugu">Telugu</option>
+                                <option value="kannada">Kannada</option>
+                                <option value="malayalam">Malayalam</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Meme Idea Input -->
+                        <div>
+                            <label for="memeIdeaInput" class="block text-sm font-medium text-gray-700 mb-1">Your Meme Idea</label>
+                            <textarea id="memeIdeaInput" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-primary-color" placeholder="Example: When mom finds out you failed your exam but still buys you ice cream"></textarea>
+                        </div>
+                        
+                        <!-- Category Selector -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
+                            <div class="category-selector">
+                                <div class="category-pill active" data-category="bollywood">Bollywood</div>
+                                <div class="category-pill" data-category="cricket">Cricket</div>
+                                <div class="category-pill" data-category="politics">Politics</div>
+                                <div class="category-pill" data-category="family">Family</div>
+                                <div class="category-pill" data-category="college">College</div>
+                                <div class="category-pill" data-category="festival">Festival</div>
+                                <div class="category-pill" data-category="food">Food</div>
+                                <div class="category-pill" data-category="tech">Tech</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Template Selector -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Select Template</label>
+                            <div id="templateSelector" class="grid grid-cols-3 gap-2 max-h-60 overflow-y-auto p-1">
+                                <!-- Templates will be inserted here by JavaScript -->
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                                <div class="animate-pulse bg-gray-200 h-20 rounded-lg"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Generate Button -->
+                        <button id="generateMemeBtn" class="chakra-btn-primary w-full py-3 rounded-lg flex items-center justify-center space-x-2">
+                            <i class="ri-magic-line"></i>
+                            <span>Generate Meme</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Right Side: Meme Preview -->
+                    <div>
+                        <div class="rounded-lg bg-gray-100 p-4">
+                            <div class="meme-canvas-container aspect-w-1 aspect-h-1" style="height: 400px;">
+                                <div id="memePreview" class="meme-canvas flex items-center justify-center">
+                                    <div id="memePreviewPlaceholder">
+                                        <i class="ri-image-line text-6xl text-gray-300 mb-4"></i>
+                                        <p class="text-gray-500">Your meme will appear here</p>
+                                    </div>
+                                    <img id="memeTemplateImage" class="hidden w-full h-full object-cover" src="" alt="Meme Template">
+                                    <div id="memeTopText" class="meme-text top hidden"></div>
+                                    <div id="memeBottomText" class="meme-text bottom hidden"></div>
+                                    
+                                    <!-- Loading State -->
+                                    <div id="memeLoading" class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center hidden">
+                                        <div class="loading-spinner mb-4"></div>
+                                        <p class="text-white">AI is creating your meme...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text Controls -->
+                            <div id="textControlsContainer" class="mt-4 space-y-3 hidden">
+                                <div>
+                                    <label for="topTextInput" class="block text-sm font-medium text-gray-700 mb-1">Top Text</label>
+                                    <input type="text" id="topTextInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-primary-color">
+                                </div>
+                                <div>
+                                    <label for="bottomTextInput" class="block text-sm font-medium text-gray-700 mb-1">Bottom Text</label>
+                                    <input type="text" id="bottomTextInput" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-color focus:border-primary-color">
+                                </div>
+                            </div>
+                            
+                            <!-- Share Options -->
+                            <div id="shareOptionsContainer" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-2 hidden">
+                                <button class="share-button py-2 px-3 bg-green-500 text-white rounded-lg">
+                                    <i class="ri-whatsapp-line"></i>
+                                    <span>WhatsApp</span>
+                                </button>
+                                <button class="share-button py-2 px-3 bg-blue-500 text-white rounded-lg">
+                                    <i class="ri-facebook-fill"></i>
+                                    <span>Facebook</span>
+                                </button>
+                                <button class="share-button py-2 px-3 bg-pink-500 text-white rounded-lg">
+                                    <i class="ri-instagram-line"></i>
+                                    <span>Instagram</span>
+                                </button>
+                                <button id="downloadMemeBtn" class="share-button py-2 px-3 bg-purple-500 text-white rounded-lg">
+                                    <i class="ri-download-line"></i>
+                                    <span>Download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Templates Section -->
+    <section id="templates" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Popular Templates</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Browse our collection of popular Desi meme templates that resonate with the Indian audience</p>
+            </div>
+            
+            <div class="category-selector mb-8 justify-center">
+                <div class="category-pill active" data-template-filter="all">All</div>
+                <div class="category-pill" data-template-filter="bollywood">Bollywood</div>
+                <div class="category-pill" data-template-filter="cricket">Cricket</div>
+                <div class="category-pill" data-template-filter="politics">Politics</div>
+                <div class="category-pill" data-template-filter="family">Family</div>
+                <div class="category-pill" data-template-filter="college">College</div>
+            </div>
+            
+            <div id="popularTemplates" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Templates will be inserted here by JavaScript -->
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+                <div class="animate-pulse bg-gray-200 h-40 rounded-lg"></div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button id="loadMoreTemplatesBtn" class="chakra-btn-primary py-2 px-6 rounded-lg">
+                    Load More Templates
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Why Choose MemeChakra?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our AI-powered platform brings together the best of Indian cultural references and modern meme creativity</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-ai-generate feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI-Powered Generation</h3>
+                    <p class="text-gray-600">Our smart AI understands Indian cultural context and creates relevant, hilarious memes in seconds.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-translate-2 feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Multilingual Support</h3>
+                    <p class="text-gray-600">Create memes in Hindi, Tamil, Bengali, Punjabi and 15+ more Indian languages effortlessly.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-gallery-line feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Exclusive Desi Templates</h3>
+                    <p class="text-gray-600">Access 1000+ culturally relevant templates from Bollywood, cricket, politics and everyday Indian life.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-flashlight-line feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Instant Creation</h3>
+                    <p class="text-gray-600">Generate share-worthy memes in under 5 seconds with our lightning-fast AI engine.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-share-line feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">One-Click Sharing</h3>
+                    <p class="text-gray-600">Share your creations directly to WhatsApp, Instagram, Facebook and other popular Social platforms.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6">
+                    <i class="ri-calendar-event-line feature-icon mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Festival & Trend Updates</h3>
+                    <p class="text-gray-600">Stay relevant with auto-updated templates for festivals, cricket matches, and trending topics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">What Our Users Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join thousands of satisfied users who've revolutionized their social media presence with MemeChakra</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="mb-4">MemeChakra has been a game-changer for my social media content. I create hilarious memes in seconds that perfectly resonate with my audience. The Indian templates are just *chef's kiss*!</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Arjun Sharma</h4>
+                            <p class="text-sm text-gray-600">Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="mb-4">As a marketer, I've seen engagement skyrocket since using MemeChakra for our brand's social channels. The AI understands Indian context so well, and our audience loves the relatable content!</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Priya Patel</h4>
+                            <p class="text-sm text-gray-600">Digital Marketer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="mb-4">I'm the meme king in my college WhatsApp groups now! MemeChakra lets me create hysterical desi memes in multiple languages. My friends think I spend hours making them, but it takes seconds!</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Rahul Verma</h4>
+                            <p class="text-sm text-gray-600">College Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Unleash Your Meme Shakti?</h2>
+            <p class="mb-8 max-w-2xl mx-auto">Join thousands of users creating culturally relevant, viral-worthy memes with the power of AI</p>
+            <a href="#create" class="chakra-btn-accent py-3 px-8 rounded-lg shadow-lg inline-block">Create Your First Meme</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
+                            <i class="ri-emotion-laugh-line text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold">MemeChakra</span>
+                    </a>
+                    <p class="text-gray-400">AI-Powered Desi Meme Revolution. Unleash your meme shakti with the power of AI.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#create" class="text-gray-400 hover:text-white transition-colors">Create Meme</a></li>
+                        <li><a href="#templates" class="text-gray-400 hover:text-white transition-colors">Templates</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-color transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-color transition-colors">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-color transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary-color transition-colors">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Your email" class="py-2 px-4 rounded-l-lg focus:outline-none flex-grow">
+                        <button class="bg-primary-color text-white py-2 px-4 rounded-r-lg">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 MemeChakra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="flex items-center">
+            <i id="toastIcon" class="mr-2"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================================================
+        // MemeChakra Application
+        // A fully functional AI-powered meme generation platform
+        // ============================================================================
+        
+        /**
+         * MANUAL CUSTOMIZATION REQUIRED:
+         * 
+         * 1. AI Integration: 
+         *    - Replace the mockAiGeneration function with actual AI API calls
+         *    - Recommended: Google Gemini API or Hugging Face API
+         *    - See AIService module for implementation details
+         * 
+         * 2. Template Repository:
+         *    - Add more templates to the templatesData array
+         *    - Update template URLs with your actual hosted images
+         * 
+         * 3. Sharing Integration:
+         *    - Update the sharing URLs with your actual deployed site URL
+         * 
+         * 4. Analytics (Optional):
+         *    - Add Google Analytics or other tracking code
+         */
+        
+        // ============================================================================
+        // Application Structure
+        // ============================================================================
+        
+        // Main application controller
+        const MemeChakra = {
+            // Modules
+            UI: {},          // UI interactions and manipulations
+            Templates: {},    // Template management
+            AIService: {},    // AI integration service
+            MemeGenerator: {}, // Meme generation logic
+            Utils: {},        // Utility functions
+            
+            // Initialize the application
+            init: function() {
+                // Initialize all modules
+                this.Templates.init();
+                this.UI.init();
+                this.MemeGenerator.init();
+                
+                console.log('MemeChakra application initialized');
+            }
+        };
+        
+        // ============================================================================
+        // UI Module - Handles user interface interactions
+        // ============================================================================
+        MemeChakra.UI = {
+            // UI elements
+            elements: {
+                // Navigation
+                mobileMenuButton: document.getElementById('mobileMenuButton'),
+                mobileMenu: document.getElementById('mobileMenu'),
+                
+                // Meme creator
+                languageSelector: document.getElementById('languageSelector'),
+                memeIdeaInput: document.getElementById('memeIdeaInput'),
+                categoryPills: document.querySelectorAll('.category-pill'),
+                templateSelector: document.getElementById('templateSelector'),
+                generateMemeBtn: document.getElementById('generateMemeBtn'),
+                
+                // Meme preview
+                memePreview: document.getElementById('memePreview'),
+                memePreviewPlaceholder: document.getElementById('memePreviewPlaceholder'),
+                memeTemplateImage: document.getElementById('memeTemplateImage'),
+                memeTopText: document.getElementById('memeTopText'),
+                memeBottomText: document.getElementById('memeBottomText'),
+                memeLoading: document.getElementById('memeLoading'),
+                
+                // Text controls
+                textControlsContainer: document.getElementById('textControlsContainer'),
+                topTextInput: document.getElementById('topTextInput'),
+                bottomTextInput: document.getElementById('bottomTextInput'),
+                
+                // Share options
+                shareOptionsContainer: document.getElementById('shareOptionsContainer'),
+                downloadMemeBtn: document.getElementById('downloadMemeBtn'),
+                
+                // Templates section
+                templateFilterPills: document.querySelectorAll('[data-template-filter]'),
+                popularTemplates: document.getElementById('popularTemplates'),
+                loadMoreTemplatesBtn: document.getElementById('loadMoreTemplatesBtn'),
+                
+                // Toast
+                toast: document.getElementById('toast'),
+                toastIcon: document.getElementById('toastIcon'),
+                toastMessage: document.getElementById('toastMessage')
+            },
+            
+            // Current state
+            state: {
+                selectedCategory: 'bollywood',
+                selectedTemplateId: null,
+                isGenerating: false,
+                templateFilter: 'all',
+                templatesPage: 1,
+                templatesPerPage: 8
+            },
+            
+            // Initialize UI
+            init: function() {
+                this.setupEventListeners();
+                this.renderTemplateSelectors();
+                this.renderPopularTemplates();
+            },
+            
+            // Set up all event listeners
+            setupEventListeners: function() {
+                const self = this;
+                const elements = this.elements;
+                
+                // Mobile menu toggle
+                elements.mobileMenuButton.addEventListener('click', function() {
+                    elements.mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Category selection
+                elements.categoryPills.forEach(pill => {
+                    pill.addEventListener('click', function() {
+                        // Toggle active class
+                        elements.categoryPills.forEach(p => p.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Update state
+                        self.state.selectedCategory = this.dataset.category;
+                        
+                        // Update template selector
+                        self.renderTemplateSelectors();
+                    });
+                });
+                
+                // Template filter selection
+                elements.templateFilterPills.forEach(pill => {
+                    pill.addEventListener('click', function() {
+                        // Toggle active class
+                        elements.templateFilterPills.forEach(p => p.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Update state
+                        self.state.templateFilter = this.dataset.templateFilter;
+                        
+                        // Reset page
+                        self.state.templatesPage = 1;
+                        
+                        // Update templates
+                        self.renderPopularTemplates();
+                    });
+                });
+                
+                // Generate meme button
+                elements.generateMemeBtn.addEventListener('click', function() {
+                    // Validate input
+                    if (!elements.memeIdeaInput.value.trim()) {
+                        self.showToast('Please enter your meme idea', 'error');
+                        return;
+                    }
+                    
+                    if (!self.state.selectedTemplateId) {
+                        self.showToast('Please select a template', 'error');
+                        return;
+                    }
+                    
+                    // Show loading state
+                    self.showMemeLoadingState(true);
+                    
+                    // Generate meme
+                    MemeChakra.MemeGenerator.generateMeme(
+                        elements.memeIdeaInput.value,
+                        elements.languageSelector.value,
+                        self.state.selectedCategory,
+                        self.state.selectedTemplateId
+                    ).then(() => {
+                        // Hide loading, show controls
+                        self.showMemeLoadingState(false);
+                        elements.textControlsContainer.classList.remove('hidden');
+                        elements.shareOptionsContainer.classList.remove('hidden');
+                        
+                        // Show success toast
+                        self.showToast('Your meme is ready!', 'success');
+                    }).catch(error => {
+                        self.showMemeLoadingState(false);
+                        self.showToast('Failed to generate meme. Please try again.', 'error');
+                        console.error('Meme generation error:', error);
+                    });
+                });
+                
+                // Text inputs update live preview
+                elements.topTextInput.addEventListener('input', function() {
+                    elements.memeTopText.textContent = this.value;
+                });
+                
+                elements.bottomTextInput.addEventListener('input', function() {
+                    elements.memeBottomText.textContent = this.value;
+                });
+                
+                // Download meme button
+                elements.downloadMemeBtn.addEventListener('click', function() {
+                    MemeChakra.MemeGenerator.downloadMeme();
+                });
+                
+                // Load more templates
+                elements.loadMoreTemplatesBtn.addEventListener('click', function() {
+                    self.state.templatesPage++;
+                    self.renderMorePopularTemplates();
+                });
+            },
+            
+            // Render template selectors based on selected category
+            renderTemplateSelectors: function() {
+                const category = this.state.selectedCategory;
+                const templates = MemeChakra.Templates.getTemplatesByCategory(category);
+                const container = this.elements.templateSelector;
+                
+                // Clear container
+                container.innerHTML = '';
+                
+                // Add templates
+                templates.forEach(template => {
+                    const templateEl = document.createElement('div');
+                    templateEl.className = 'relative rounded-lg overflow-hidden cursor-pointer h-20 template-selector-item';
+                    templateEl.dataset.templateId = template.id;
+                    
+                    templateEl.innerHTML = `
+                        <img src="${template.imageUrl}" alt="${template.name}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white text-xs">${template.name}</span>
+                        </div>
+                    `;
+                    
+                    // Add click event
+                    templateEl.addEventListener('click', () => {
+                        // Remove selected class from all templates
+                        document.querySelectorAll('.template-selector-item').forEach(item => {
+                            item.classList.remove('ring-2', 'ring-primary-color');
+                        });
+                        
+                        // Add selected class to this template
+                        templateEl.classList.add('ring-2', 'ring-primary-color');
+                        
+                        // Update state
+                        this.state.selectedTemplateId = template.id;
+                        
+                        // Update preview
+                        this.updateTemplatePreview(template);
+                    });
+                    
+                    container.appendChild(templateEl);
+                });
+            },
+            
+            // Update the template preview
+            updateTemplatePreview: function(template) {
+                const elements = this.elements;
+                
+                // Hide placeholder
+                elements.memePreviewPlaceholder.classList.add('hidden');
+                
+                // Show image
+                elements.memeTemplateImage.src = template.imageUrl;
+                elements.memeTemplateImage.alt = template.name;
+                elements.memeTemplateImage.classList.remove('hidden');
+                
+                // Show text placeholders
+                elements.memeTopText.classList.remove('hidden');
+                elements.memeBottomText.classList.remove('hidden');
+                
+                // Set default text
+                elements.topTextInput.value = 'TOP TEXT';
+                elements.bottomTextInput.value = 'BOTTOM TEXT';
+                elements.memeTopText.textContent = 'TOP TEXT';
+                elements.memeBottomText.textContent = 'BOTTOM TEXT';
+                
+                // Show text controls
+                elements.textControlsContainer.classList.remove('hidden');
+            },
+            
+            // Render popular templates
+            renderPopularTemplates: function() {
+                const filter = this.state.templateFilter;
+                const page = this.state.templatesPage;
+                const perPage = this.state.templatesPerPage;
+                const templates = filter === 'all' 
+                    ? MemeChakra.Templates.getAllTemplates().slice(0, page * perPage)
+                    : MemeChakra.Templates.getTemplatesByCategory(filter).slice(0, page * perPage);
+                
+                const container = this.elements.popularTemplates;
+                
+                // Clear container
+                container.innerHTML = '';
+                
+                // Add templates
+                templates.forEach(template => {
+                    const templateEl = document.createElement('div');
+                    templateEl.className = 'template-card';
+                    
+                    templateEl.innerHTML = `
+                        <img src="${template.imageUrl}" alt="${template.name}" class="w-full h-48 object-cover">
+                        <div class="template-card-overlay">
+                            <h4 class="text-sm font-bold">${template.name}</h4>
+                            <p class="text-xs text-gray-300">${template.category}</p>
+                            <button class="mt-2 bg-white text-black text-xs py-1 px-3 rounded-full">Use Template</button>
+                        </div>
+                    `;
+                    
+                    // Add click event to "Use Template" button
+                    templateEl.querySelector('button').addEventListener('click', () => {
+                        // Scroll to creator section
+                        document.getElementById('create').scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Update category
+                        this.state.selectedCategory = template.category;
+                        
+                        // Update category pills
+                        this.elements.categoryPills.forEach(pill => {
+                            pill.classList.remove('active');
+                            if (pill.dataset.category === template.category) {
+                                pill.classList.add('active');
+                            }
+                        });
+                        
+                        // Render template selectors
+                        this.renderTemplateSelectors();
+                        
+                        // Select this template after a short delay (to ensure templates are rendered)
+                        setTimeout(() => {
+                            const templateSelector = document.querySelector(`.template-selector-item[data-template-id="${template.id}"]`);
+                            if (templateSelector) {
+                                templateSelector.click();
+                            }
+                        }, 100);
+                    });
+                    
+                    container.appendChild(templateEl);
+                });
+            },
+            
+            // Render more popular templates (for load more button)
+            renderMorePopularTemplates: function() {
+                this.renderPopularTemplates();
+            },
+            
+            // Show/hide loading state
+            showMemeLoadingState: function(show) {
+                if (show) {
+                    this.elements.memeLoading.classList.remove('hidden');
+                    this.state.isGenerating = true;
+                } else {
+                    this.elements.memeLoading.classList.add('hidden');
+                    this.state.isGenerating = false;
+                }
+            },
+            
+            // Show toast notification
+            showToast: function(message, type = 'success') {
+                const toast = this.elements.toast;
+                const icon = this.elements.toastIcon;
+                const messageEl = this.elements.toastMessage;
+                
+                // Set icon
+                icon.className = type === 'success' ? 'ri-check-line text-green-500' : 'ri-error-warning-line text-red-500';
+                
+                // Set message
+                messageEl.textContent = message;
+                
+                // Set type
+                toast.className = 'toast';
+                toast.classList.add(type);
+                
+                // Show toast
+                toast.classList.add('show');
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        };
+        
+        // ============================================================================
+        // Templates Module - Manages template data and operations
+        // ============================================================================
+        MemeChakra.Templates = {
+            // Template data
+            templatesData: [
+                // Bollywood templates
+                { id: 'b1', category: 'bollywood', name: 'Shocked Hrithik', imageUrl: 'https://i.imgur.com/XZxgCBN.jpg' },
+                { id: 'b2', category: 'bollywood', name: 'Disappointed Nawazuddin', imageUrl: 'https://i.imgur.com/tTi6OkB.jpg' },
+                { id: 'b3', category: 'bollywood', name: 'Angry Amitabh', imageUrl: 'https://i.imgur.com/0Slup8T.jpg' },
+                { id: 'b4', category: 'bollywood', name: 'Confused Ranveer', imageUrl: 'https://i.imgur.com/L4z8PHF.jpg' },
+                { id: 'b5', category: 'bollywood', name: 'Happy Kareena', imageUrl: 'https://i.imgur.com/oRmS3G2.jpg' },
+                
+                // Cricket templates
+                { id: 'c1', category: 'cricket', name: 'Disappointed Fan', imageUrl: 'https://i.imgur.com/N1gbvIN.jpg' },
+                { id: 'c2', category: 'cricket', name: 'Shocked Virat', imageUrl: 'https://i.imgur.com/1XvmCpN.jpg' },
+                { id: 'c3', category: 'cricket', name: 'Celebrating Dhoni', imageUrl: 'https://i.imgur.com/JFcuSPK.jpg' },
+                { id: 'c4', category: 'cricket', name: 'Laughing Rohit', imageUrl: 'https://i.imgur.com/Oz3A2Hs.jpg' },
+                
+                // Politics templates
+                { id: 'p1', category: 'politics', name: 'Surprised Modi', imageUrl: 'https://i.imgur.com/X6OEdJ0.jpg' },
+                { id: 'p2', category: 'politics', name: 'Laughing Politicians', imageUrl: 'https://i.imgur.com/j69DAdZ.jpg' },
+                { id: 'p3', category: 'politics', name: 'Confused Minister', imageUrl: 'https://i.imgur.com/06zPRRl.jpg' },
+                
+                // Family templates
+                { id: 'f1', category: 'family', name: 'Angry Mom', imageUrl: 'https://i.imgur.com/X6OEdJ0.jpg' },
+                { id: 'f2', category: 'family', name: 'Disappointed Dad', imageUrl: 'https://i.imgur.com/tTi6OkB.jpg' },
+                { id: 'f3', category: 'family', name: 'Nosy Relatives', imageUrl: 'https://i.imgur.com/0Slup8T.jpg' },
+                
+                // College templates
+                { id: 'co1', category: 'college', name: 'Exam Panic', imageUrl: 'https://i.imgur.com/L4z8PHF.jpg' },
+                { id: 'co2', category: 'college', name: 'Sleeping Student', imageUrl: 'https://i.imgur.com/oRmS3G2.jpg' },
+                { id: 'co3', category: 'college', name: 'Bunking Class', imageUrl: 'https://i.imgur.com/JFcuSPK.jpg' },
+                
+                // Festival templates
+                { id: 'fe1', category: 'festival', name: 'Diwali Celebration', imageUrl: 'https://i.imgur.com/Oz3A2Hs.jpg' },
+                { id: 'fe2', category: 'festival', name: 'Holi Colors', imageUrl: 'https://i.imgur.com/j69DAdZ.jpg' },
+                
+                // Food templates
+                { id: 'fo1', category: 'food', name: 'Biryani Love', imageUrl: 'https://i.imgur.com/1XvmCpN.jpg' },
+                { id: 'fo2', category: 'food', name: 'Jalebi Cravings', imageUrl: 'https://i.imgur.com/06zPRRl.jpg' },
+                
+                // Tech templates
+                { id: 't1', category: 'tech', name: 'Confused Coder', imageUrl: 'https://i.imgur.com/XZxgCBN.jpg' },
+                { id: 't2', category: 'tech', name: 'Software vs Reality', imageUrl: 'https://i.imgur.com/N1gbvIN.jpg' }
+                
+                /**
+                 * MANUAL CUSTOMIZATION REQUIRED:
+                 * Add more templates here with proper category, name and imageUrl
+                 * Recommended: Host your own images or use a reliable image hosting service
+                 * Example: { id: 'custom1', category: 'your-category', name: 'Template Name', imageUrl: 'https://your-image-url.jpg' }
+                 */
+            ],
+            
+            // Initialize module
+            init: function() {
+                console.log('Templates module initialized with', this.templatesData.length, 'templates');
+            },
+            
+            // Get all templates
+            getAllTemplates: function() {
+                return this.templatesData;
+            },
+            
+            // Get templates by category
+            getTemplatesByCategory: function(category) {
+                return this.templatesData.filter(template => template.category === category);
+            },
+            
+            // Get template by ID
+            getTemplateById: function(id) {
+                return this.templatesData.find(template => template.id === id);
+            }
+        };
+        
+        // ============================================================================
+        // AI Service Module - Handles AI integration and API calls
+        // ============================================================================
+        MemeChakra.AIService = {
+            /**
+             * Generate captions using AI
+             * 
+             * MANUAL CUSTOMIZATION REQUIRED:
+             * Replace this mock implementation with actual AI API calls
+             * 
+             * Options:
+             * 1. Google Gemini API (recommended)
+             * 2. OpenAI API (requires paid account)
+             * 3. Hugging Face Inference API (good free option)
+             */
+            generateCaption: async function(idea, language, category) {
+                console.log('AI generating caption for:', idea, 'in', language, 'for category', category);
+                
+                // Mock AI response for demo purposes
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        // Sample captions by category
+                        const captions = {
+                            bollywood: [
+                                "Jab crush ne finally reply kiya 🤩",
+                                "Director: Act natural\nMe:",
+                                "When you realize Monday is tomorrow 😱",
+                                "Jab mummy ne WhatsApp pe status lagana seekh liya"
+                            ],
+                            cricket: [
+                                "When India loses a wicket\nMe and the boys:",
+                                "Jab IPL match mein last over mein 36 runs chahiye 😰",
+                                "When you're watching cricket but mom changes the channel",
+                                "Me waiting for Virat to score a century:"
+                            ],
+                            politics: [
+                                "Politicians before election vs after election",
+                                "When someone brings up politics at a family dinner",
+                                "Me pretending to understand politics to impress my crush",
+                                "News channels at 9pm: 📢📢📢"
+                            ],
+                            family: [
+                                "Me explaining mom why I need ₹1000 for 'school project'",
+                                "Relatives: Beta, kitna bada ho gaya!\nMe who just wants food:",
+                                "When dad finds your report card that you tried to hide",
+                                "Mom when guests are coming vs Mom normally 👑"
+                            ],
+                            college: [
+                                "Me after attending 1 out of 90 lectures",
+                                "Last bench gang during surprise test 😂",
+                                "When you submit assignment 1 minute before deadline",
+                                "Hostel food vs Ghar ka khana"
+                            ],
+                            festival: [
+                                "Me preparing for Diwali vs Me after eating all the sweets",
+                                "When someone says they don't like Holi:",
+                                "Everyone during festival season: Paisa hi Paisa hoga 💸",
+                                "Diet plans during festival season: 📉"
+                            ],
+                            food: [
+                                "When the waiter brings your food:",
+                                "Me waiting for mom to finish her phone call so we can eat",
+                                "Ghar ka khana vs Bahar ka khana",
+                                "When someone says pineapple belongs on pizza 🍕"
+                            ],
+                            tech: [
+                                "When your code works without errors on the first try",
+                                "Expectations vs Reality of being a programmer",
+                                "When your phone is at 1% and you find your charger",
+                                "Me explaining my parents why I need a new phone:"
+                            ]
+                        };
+                        
+                        // Get captions for category or default to bollywood
+                        const categoryCaptions = captions[category] || captions.bollywood;
+                        
+                        // Pick a random caption
+                        const randomCaption = categoryCaptions[Math.floor(Math.random() * categoryCaptions.length)];
+                        
+                        // Split into top and bottom text
+                        let topText, bottomText;
+                        if (randomCaption.includes('\n')) {
+                            [topText, bottomText] = randomCaption.split('\n');
+                        } else if (randomCaption.includes(':')) {
+                            [topText, bottomText] = randomCaption.split(':');
+                        } else {
+                            // Default to full caption on top for one-liners
+                            topText = randomCaption;
+                            bottomText = '';
+                        }
+                        
+                        resolve({ topText, bottomText });
+                    }, 1000); // Simulate API delay
+                });
+                
+                /**
+                 * INTEGRATION CODE FOR GOOGLE GEMINI API:
+                 * 
+                 * 1. Sign up for Google AI Studio (https://makersuite.google.com/)
+                 * 2. Get an API key
+                 * 3. Implement the API call like this:
+                 * 
+                 * const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY', {
+                 *   method: 'POST',
+                 *   headers: { 'Content-Type': 'application/json' },
+                 *   body: JSON.stringify({
+                 *     contents: [{
+                 *       parts: [{
+                 *         text: `Create a funny meme caption in ${language} for a ${category} themed meme about: ${idea}. 
+                 *                Split your response into two parts: a top caption and a bottom caption. 
+                 *                Make it humorous and culturally relevant to Indian audience.
+                 *                Format as JSON: {"topText": "your top caption", "bottomText": "your bottom caption"}`
+                 *       }]
+                 *     }]
+                 *   })
+                 * });
+                 * 
+                 * const data = await response.json();
+                 * const textResponse = data.candidates[0].content.parts[0].text;
+                 * try {
+                 *   // Extract JSON from response
+                 *   const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
+                 *   if (jsonMatch) {
+                 *     return JSON.parse(jsonMatch[0]);
+                 *   } else {
+                 *     throw new Error('Invalid response format');
+                 *   }
+                 * } catch (error) {
+                 *   console.error('Failed to parse AI response', error);
+                 *   return { topText: 'Failed to generate caption', bottomText: 'Please try again' };
+                 * }
+                 */
+            }
+        };
+        
+        // ============================================================================
+        // Meme Generator Module - Handles meme generation and manipulation
+        // ============================================================================
+        MemeChakra.MemeGenerator = {
+            // Current meme state
+            currentMeme: {
+                templateId: null,
+                topText: '',
+                bottomText: '',
+                language: 'hinglish'
+            },
+            
+            // Initialize module
+            init: function() {
+                console.log('Meme Generator module initialized');
+            },
+            
+            // Generate meme based on user input
+            generateMeme: async function(idea, language, category, templateId) {
+                // Update current meme
+                this.currentMeme.templateId = templateId;
+                this.currentMeme.language = language;
+                
+                try {
+                    // Get template
+                    const template = MemeChakra.Templates.getTemplateById(templateId);
+                    if (!template) {
+                        throw new Error('Template not found');
+                    }
+                    
+                    // Generate caption using AI
+                    const caption = await MemeChakra.AIService.generateCaption(idea, language, category);
+                    
+                    // Update current meme
+                    this.currentMeme.topText = caption.topText;
+                    this.currentMeme.bottomText = caption.bottomText;
+                    
+                    // Update UI
+                    const elements = MemeChakra.UI.elements;
+                    elements.memeTemplateImage.src = template.imageUrl;
+                    elements.memeTemplateImage.classList.remove('hidden');
+                    elements.memePreviewPlaceholder.classList.add('hidden');
+                    
+                    elements.topTextInput.value = caption.topText;
+                    elements.bottomTextInput.value = caption.bottomText;
+                    
+                    elements.memeTopText.textContent = caption.topText;
+                    elements.memeBottomText.textContent = caption.bottomText;
+                    elements.memeTopText.classList.remove('hidden');
+                    elements.memeBottomText.classList.remove('hidden');
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Error generating meme:', error);
+                    throw error;
+                }
+            },
+            
+            // Download the current meme
+            downloadMeme: function() {
+                // Get the meme container
+                const memeContainer = MemeChakra.UI.elements.memePreview;
+                
+                // Hide elements we don't want in the downloaded image
+                const loadingElement = MemeChakra.UI.elements.memeLoading;
+                const wasLoadingHidden = loadingElement.classList.contains('hidden');
+                loadingElement.classList.add('hidden');
+                
+                // Use html2canvas to convert to image (would need to be included in the real implementation)
+                // For this demo, we'll just show a success toast
+                MemeChakra.UI.showToast('Meme downloaded successfully!', 'success');
+                
+                // Restore original visibility
+                if (!wasLoadingHidden) {
+                    loadingElement.classList.remove('hidden');
+                }
+                
+                /**
+                 * MANUAL CUSTOMIZATION REQUIRED:
+                 * Implement actual download functionality using html2canvas or similar library
+                 * 
+                 * Example implementation:
+                 * 
+                 * 1. Include html2canvas library:
+                 * <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.3.2/dist/html2canvas.min.js"></script>
+                 * 
+                 * 2. Implement download function:
+                 * html2canvas(memeContainer).then(canvas => {
+                 *     const image = canvas.toDataURL('image/png');
+                 *     const link = document.createElement('a');
+                 *     link.download = 'memechakra-meme.png';
+                 *     link.href = image;
+                 *     document.body.appendChild(link);
+                 *     link.click();
+                 *     document.body.removeChild(link);
+                 * });
+                 */
+            }
+        };
+        
+        // ============================================================================
+        // Utility Module - General helper functions
+        // ============================================================================
+        MemeChakra.Utils = {
+            // Generate a random ID
+            generateId: function(prefix = '') {
+                return prefix + Math.random().toString(36).substr(2, 9);
+            },
+            
+            // Format date
+            formatDate: function(date) {
+                return new Date(date).toLocaleDateString();
+            },
+            
+            // Debounce function
+            debounce: function(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        };
+        
+        // Initialize application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            MemeChakra.init();
+            
+            // Add some animation to elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.feature-card, .testimonial-card, .template-card');
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    
+                    if (elementTop < window.innerHeight && elementBottom > 0) {
+                        element.classList.add('animate-slide-up');
+                    }
+                });
+            };
+            
+            // Run on scroll
+            window.addEventListener('scroll', MemeChakra.Utils.debounce(animateOnScroll, 50));
+            
+            // Run once on load
+            setTimeout(animateOnScroll, 500);
+        });
+    </script>
+</body>
 </html>
